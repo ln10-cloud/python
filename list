@@ -1,0 +1,42 @@
+aList = ['a', [100,'a']]
+bList = aList
+cList = list(aList)
+dLidt = aList[:]
+
+>>> id(aList) == id(bList)
+True
+# aList, bList bind to the same object
+
+
+>>> id(aList) == id(cList)
+False
+# factory function generates new list object
+
+>>> id(aList) == id(dList)
+False
+# list slice generates new list object
+
+>>> id(cList) == id(dList)
+False
+# ofcource, cList has nothing with dList
+
+
+>>> id(aList[1]) == id(bList[1]) and id(aList[1]) == id(cList[1]) and id(aList[1]) == id(dList[1])
+True
+
+>>> cList[1][1] = 'c'
+>>> id(aList[1]) == id(bList[1]) and id(aList[1]) == id(cList[1])
+True
+>>> aList
+['a', [100, 'c']]
+
+# Shallow copy!
+# Elements in ALL list object point to the same object. aList[1],bList[1] and cList[1]
+# Modify items in aList[1] will affect bList[1] and cList[1]
+
+
+>>> dList[1] = [88, 'bye']
+>>> id(aList[1]) == id(dList[1])
+False
+# dList[1] points to new object.
+
