@@ -20,9 +20,23 @@ False
 False
 # ofcource, cList has nothing with dList
 
+>>> [id(x) for x in aList,bList,cList,dList]
+[140572717853368, 140572717853368, 140572717966040, 140572717965680]
+
+
 
 >>> id(aList[1]) == id(bList[1]) and id(aList[1]) == id(cList[1]) and id(aList[1]) == id(dList[1])
 True
+
+>>> [id(x) for x in aList]
+[140572718909080, 140572717799040]
+>>> [id(x) for x in bList]
+[140572718909080, 140572717799040]
+>>> [id(x) for x in cList]
+[140572718909080, 140572717799040]
+>>> [id(x) for x in dList]
+[140572718909080, 140572717965968]
+
 
 >>> cList[1][1] = 'c'
 >>> id(aList[1]) == id(bList[1]) and id(aList[1]) == id(cList[1])
