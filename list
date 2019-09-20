@@ -35,7 +35,7 @@ True
 >>> [id(x) for x in cList]
 [140572718909080, 140572717799040]
 >>> [id(x) for x in dList]
-[140572718909080, 140572717965968]
+[140572718909080, 140572717799040]
 
 
 >>> cList[1][1] = 'c'
@@ -54,3 +54,24 @@ True
 False
 # dList[1] points to new object.
 
+
+#$$$$$$$$$$$$$$$$$$$  Deep copy  $$$$$$$$$$$$
+>>> import copy
+>>> aList = ['a',[[1,'a'],[2,'b']]]
+>>> AList = copy.deepcopy(aList)
+>>>
+>>> [id(x) for x in aList,AList]
+[139826624800672, 139826624800528]
+>>>
+>>> [id(x) for x in aList[1]]
+[139826624799088, 139826624799160]
+>>> [id(x) for x in AList[1]]
+[139826624800744, 139826624800960]
+# lists in aList[1] amd AList[1] point to different object, changes NOT affect others 
+>>>
+>>>
+>>> [id(x) for x in aList[1][0]]
+[30241128, 139826625742488]
+>>> [id(x) for x in AList[1][0]]
+[30241128, 139826625742488]
+# atomic elements keep the same
